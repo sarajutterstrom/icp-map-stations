@@ -17,7 +17,7 @@
             <meta name="viewport" content="width=device-width,
                 initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
             <style>
-                #map_72402d2747d25f203d38c0ebeebf7423 {
+                #map_dfa226c7e3901a18897ae53d8ea0ca8b {
                     position: relative;
                     width: 100.0%;
                     height: 100.0%;
@@ -52,8 +52,6 @@
         
     <script src="https://cdn.jsdelivr.net/npm/leaflet.fullscreen@3.0.0/Control.FullScreen.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet.fullscreen@3.0.0/Control.FullScreen.css"/>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-minimap/3.6.1/Control.MiniMap.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet-minimap/3.6.1/Control.MiniMap.css"/>
 </head>
 <body>
     
@@ -61,15 +59,15 @@
 <div style="
 position: fixed;
 top: 40px;
-right: 40px; 
-width: 220px;
+right: 40px;
+width: 120px;
 z-index: 9998;
 background-color: white;
 border: 2px solid #777;
-padding: 10px;
-font-size: 13px;
+padding: 6px;
+font-size: 12px;
 box-shadow: 2px 2px 6px rgba(0,0,0,0.3);
-line-height: 1.45;
+line-height: 1.4;
 ">
 <b>ICP program colors</b><br>
 <span style='color:red;'>●</span> ICP IM<br>
@@ -85,7 +83,7 @@ line-height: 1.45;
     position: fixed;
     top: 20px;
     left: 20px;
-    width: 295px;
+    width: 180px;
     max-height: 78vh;
     overflow-y: auto;
     z-index: 9999;
@@ -170,7 +168,7 @@ line-height: 1.45;
     </div>
 </div>
     
-            <div class="folium-map" id="map_72402d2747d25f203d38c0ebeebf7423" ></div>
+            <div class="folium-map" id="map_dfa226c7e3901a18897ae53d8ea0ca8b" ></div>
         
 </body>
 <script>
@@ -182,7 +180,7 @@ line-height: 1.45;
     var allIcps = ["ICP Forest", "ICP IM", "ICP Materials", "ICP Vegetation", "ICP Waters"];
     var allMeasurements = ["deposition", "glass soiling", "lake chemistry", "limestone recession", "open field", "runoff", "soil", "soilwater", "throughfall", "vegetation"];
     var showCoordinates = false;
-    var mapRef = map_72402d2747d25f203d38c0ebeebf7423;
+    var mapRef = map_dfa226c7e3901a18897ae53d8ea0ca8b;
     var markerLayer = L.layerGroup().addTo(mapRef);
     var activeMarkers = [];
 
@@ -221,7 +219,7 @@ line-height: 1.45;
     }
 
     function matchesAny(stationValues, selectedValues) {
-        if (selectedValues.length === 0) return true;
+        if (selectedValues.length === 0) return false;
         return stationValues.some(function(v) { return selectedValues.includes(v); });
     }
 
@@ -230,7 +228,7 @@ line-height: 1.45;
         var measurementText = station.measurement_list.length ? station.measurement_list.join(', ') : 'Not specified';
 
         var html = '' +
-            '<div style="width: 270px; line-height: 1.5;">' +
+            '<div style="width: 180px; line-height: 1.5;">' +
                 '<div style="font-size: 15px; font-weight: 700; margin-bottom: 8px;">' + escapeHtml(station.station_name) + '</div>' +
                 '<div><b>Country:</b> ' + escapeHtml(station.country || '') + '</div>' +
                 '<div class="popup-block">' +
@@ -275,7 +273,7 @@ line-height: 1.45;
                     fillOpacity: 0.95
                 });
 
-                marker.bindPopup(buildPopupHtml(station), {maxWidth: 320});
+                marker.bindPopup(buildPopupHtml(station), {maxWidth: 180});
                 marker.bindTooltip(escapeHtml(station.station_name));
                 marker.addTo(markerLayer);
                 activeMarkers.push(marker);
@@ -308,8 +306,8 @@ line-height: 1.45;
     }
 })();
     
-            var map_72402d2747d25f203d38c0ebeebf7423 = L.map(
-                "map_72402d2747d25f203d38c0ebeebf7423",
+            var map_dfa226c7e3901a18897ae53d8ea0ca8b = L.map(
+                "map_dfa226c7e3901a18897ae53d8ea0ca8b",
                 {
                     center: [55.0, 15.0],
                     crs: L.CRS.EPSG3857,
@@ -321,21 +319,21 @@ line-height: 1.45;
 
                 }
             );
-            L.control.scale().addTo(map_72402d2747d25f203d38c0ebeebf7423);
+            L.control.scale().addTo(map_dfa226c7e3901a18897ae53d8ea0ca8b);
 
             
 
         
     
-            var tile_layer_0d2767d3bea1490f11e338f2b2672cff = L.tileLayer(
-                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+            var tile_layer_aeae55609f755f0aaccb78238ea5f8e6 = L.tileLayer(
+                "https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png",
                 {
   "minZoom": 0,
-  "maxZoom": 19,
-  "maxNativeZoom": 19,
+  "maxZoom": 20,
+  "maxNativeZoom": 20,
   "noWrap": false,
-  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors",
-  "subdomains": "abc",
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca href=\"https://carto.com/attributions\"\u003eCARTO\u003c/a\u003e",
+  "subdomains": "abcd",
   "detectRetina": false,
   "tms": false,
   "opacity": 1,
@@ -344,7 +342,7 @@ line-height: 1.45;
             );
         
     
-            tile_layer_0d2767d3bea1490f11e338f2b2672cff.addTo(map_72402d2747d25f203d38c0ebeebf7423);
+            tile_layer_aeae55609f755f0aaccb78238ea5f8e6.addTo(map_dfa226c7e3901a18897ae53d8ea0ca8b);
         
     
             L.control.fullscreen(
@@ -354,30 +352,7 @@ line-height: 1.45;
   "titleCancel": "Exit Full Screen",
   "forceSeparateButton": false,
 }
-            ).addTo(map_72402d2747d25f203d38c0ebeebf7423);
-        
-    
-            var tile_layer_34e6a3b8120442185d52708ae3aa180e = L.tileLayer(
-                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
-                {"attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors", "detect_retina": false, "max_native_zoom": 19, "max_zoom": 19, "min_zoom": 0, "no_wrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
-            );
-            var mini_map_fe026bd82bfd59b527e59e9773ea6822 = new L.Control.MiniMap(
-                tile_layer_34e6a3b8120442185d52708ae3aa180e,
-                {
-  "position": "bottomright",
-  "width": 150,
-  "height": 150,
-  "collapsedWidth": 25,
-  "collapsedHeight": 25,
-  "zoomLevelOffset": -5,
-  "centerFixed": false,
-  "zoomAnimation": false,
-  "toggleDisplay": true,
-  "autoToggleDisplay": false,
-  "minimized": false,
-}
-            );
-            map_72402d2747d25f203d38c0ebeebf7423.addControl(mini_map_fe026bd82bfd59b527e59e9773ea6822);
+            ).addTo(map_dfa226c7e3901a18897ae53d8ea0ca8b);
         
 </script>
 </html>
