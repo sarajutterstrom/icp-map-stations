@@ -17,7 +17,7 @@
             <meta name="viewport" content="width=device-width,
                 initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
             <style>
-                #map_dfa226c7e3901a18897ae53d8ea0ca8b {
+                #map_b35eeab9f609b8deb8dcf0da76f4792a {
                     position: relative;
                     width: 100.0%;
                     height: 100.0%;
@@ -79,14 +79,31 @@ line-height: 1.4;
 </div>
     
 <style>
+/* Responsive filter controls.
+   The filters are a compact overlay on large maps, but collapse to a
+   small button when the map is embedded in a narrow page/iframe. */
+.filter-toggle {
+    position: fixed;
+    top: 12px;
+    left: 12px;
+    z-index: 10001;
+    border: 1px solid #777;
+    background: white;
+    border-radius: 6px;
+    padding: 7px 10px;
+    cursor: pointer;
+    box-shadow: 2px 2px 6px rgba(0,0,0,0.25);
+    font-size: 13px;
+    font-weight: 600;
+}
 .filter-panel {
     position: fixed;
-    top: 20px;
-    left: 20px;
-    width: 180px;
-    max-height: 78vh;
+    top: 52px;
+    left: 12px;
+    width: min(250px, calc(100% - 24px));
+    max-height: min(70vh, calc(100% - 64px));
     overflow-y: auto;
-    z-index: 9999;
+    z-index: 10000;
     background: white;
     border: 2px solid #777;
     border-radius: 8px;
@@ -94,6 +111,27 @@ line-height: 1.4;
     box-shadow: 2px 2px 8px rgba(0,0,0,0.25);
     font-size: 13px;
     line-height: 1.45;
+    display: none;
+}
+.filter-panel.open {
+    display: block;
+}
+
+/* Narrow embedded maps: use a smaller panel when opened. */
+@media (max-width: 699px) {
+    .filter-panel {
+        top: 50px;
+        left: 8px;
+        width: min(220px, calc(100% - 16px));
+        max-height: calc(100% - 58px);
+        padding: 10px 11px;
+        font-size: 12px;
+    }
+
+    .filter-toggle {
+        top: 8px;
+        left: 8px;
+    }
 }
 .filter-panel h4 {
     margin: 0 0 10px 0;
@@ -141,6 +179,10 @@ line-height: 1.4;
 }
 </style>
 
+<button type="button" class="filter-toggle" id="filter-toggle"
+        aria-expanded="false" aria-controls="filter-panel"
+        onclick="toggleFilterPanel()">☰ Filters</button>
+
 <div class="filter-panel" id="filter-panel">
     <h4>Station filters</h4>
 
@@ -168,7 +210,7 @@ line-height: 1.4;
     </div>
 </div>
     
-            <div class="folium-map" id="map_dfa226c7e3901a18897ae53d8ea0ca8b" ></div>
+            <div class="folium-map" id="map_b35eeab9f609b8deb8dcf0da76f4792a" ></div>
         
 </body>
 <script>
@@ -180,7 +222,7 @@ line-height: 1.4;
     var allIcps = ["ICP Forest", "ICP IM", "ICP Materials", "ICP Vegetation", "ICP Waters"];
     var allMeasurements = ["deposition", "glass soiling", "lake chemistry", "limestone recession", "open field", "runoff", "soil", "soilwater", "throughfall", "vegetation"];
     var showCoordinates = false;
-    var mapRef = map_dfa226c7e3901a18897ae53d8ea0ca8b;
+    var mapRef = map_b35eeab9f609b8deb8dcf0da76f4792a;
     var markerLayer = L.layerGroup().addTo(mapRef);
     var activeMarkers = [];
 
@@ -204,6 +246,14 @@ line-height: 1.4;
             container.appendChild(row);
         });
     }
+
+    window.toggleFilterPanel = function() {
+        var panel = document.getElementById('filter-panel');
+        var button = document.getElementById('filter-toggle');
+        var isOpen = panel.classList.toggle('open');
+        button.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+        button.innerHTML = isOpen ? '✕ Filters' : '☰ Filters';
+    };
 
     window.setAllChecks = function(className, checked) {
         document.querySelectorAll('.' + className).forEach(function(cb) {
@@ -297,6 +347,16 @@ line-height: 1.4;
     });
 
     updateMap();
+
+    // In a narrow embedded map, keep the filters closed so they do not
+    // obscure the map. On wider displays they open automatically.
+    if (window.innerWidth >= 700) {
+        var panel = document.getElementById('filter-panel');
+        var button = document.getElementById('filter-toggle');
+        panel.classList.add('open');
+        button.setAttribute('aria-expanded', 'true');
+        button.innerHTML = '✕ Filters';
+    }
     }
 
     if (document.readyState === "loading") {
@@ -306,8 +366,8 @@ line-height: 1.4;
     }
 })();
     
-            var map_dfa226c7e3901a18897ae53d8ea0ca8b = L.map(
-                "map_dfa226c7e3901a18897ae53d8ea0ca8b",
+            var map_b35eeab9f609b8deb8dcf0da76f4792a = L.map(
+                "map_b35eeab9f609b8deb8dcf0da76f4792a",
                 {
                     center: [55.0, 15.0],
                     crs: L.CRS.EPSG3857,
@@ -319,13 +379,13 @@ line-height: 1.4;
 
                 }
             );
-            L.control.scale().addTo(map_dfa226c7e3901a18897ae53d8ea0ca8b);
+            L.control.scale().addTo(map_b35eeab9f609b8deb8dcf0da76f4792a);
 
             
 
         
     
-            var tile_layer_aeae55609f755f0aaccb78238ea5f8e6 = L.tileLayer(
+            var tile_layer_c44f61ca79cf36bc8a2080fc252529f7 = L.tileLayer(
                 "https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png",
                 {
   "minZoom": 0,
@@ -342,7 +402,7 @@ line-height: 1.4;
             );
         
     
-            tile_layer_aeae55609f755f0aaccb78238ea5f8e6.addTo(map_dfa226c7e3901a18897ae53d8ea0ca8b);
+            tile_layer_c44f61ca79cf36bc8a2080fc252529f7.addTo(map_b35eeab9f609b8deb8dcf0da76f4792a);
         
     
             L.control.fullscreen(
@@ -352,7 +412,7 @@ line-height: 1.4;
   "titleCancel": "Exit Full Screen",
   "forceSeparateButton": false,
 }
-            ).addTo(map_dfa226c7e3901a18897ae53d8ea0ca8b);
+            ).addTo(map_b35eeab9f609b8deb8dcf0da76f4792a);
         
 </script>
 </html>
