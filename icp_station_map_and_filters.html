@@ -17,7 +17,7 @@
             <meta name="viewport" content="width=device-width,
                 initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
             <style>
-                #map_b35eeab9f609b8deb8dcf0da76f4792a {
+                #map_35a2f9fbbfdf646a0dbf8164f32e5a31 {
                     position: relative;
                     width: 100.0%;
                     height: 100.0%;
@@ -56,19 +56,32 @@
 <body>
     
     
-<div style="
-position: fixed;
-top: 40px;
-right: 40px;
-width: 120px;
-z-index: 9998;
-background-color: white;
-border: 2px solid #777;
-padding: 6px;
-font-size: 12px;
-box-shadow: 2px 2px 6px rgba(0,0,0,0.3);
-line-height: 1.4;
-">
+<style>
+#map-legend {
+    position: fixed;
+    top: 40px;
+    right: 40px;
+    width: 120px;
+    z-index: 9998;
+    background-color: white;
+    border: 2px solid #777;
+    padding: 6px;
+    font-size: 12px;
+    box-shadow: 2px 2px 6px rgba(0,0,0,0.3);
+    line-height: 1.4;
+}
+@media (max-width: 699px) {
+    #map-legend {
+        top: auto;
+        right: 8px;
+        bottom: 12px;
+        width: 110px;
+        padding: 5px;
+        font-size: 11px;
+    }
+}
+</style>
+<div id="map-legend">
 <b>ICP program colors</b><br>
 <span style='color:red;'>●</span> ICP IM<br>
 <span style='color:blue;'>●</span> ICP Waters<br>
@@ -210,7 +223,7 @@ line-height: 1.4;
     </div>
 </div>
     
-            <div class="folium-map" id="map_b35eeab9f609b8deb8dcf0da76f4792a" ></div>
+            <div class="folium-map" id="map_35a2f9fbbfdf646a0dbf8164f32e5a31" ></div>
         
 </body>
 <script>
@@ -222,7 +235,7 @@ line-height: 1.4;
     var allIcps = ["ICP Forest", "ICP IM", "ICP Materials", "ICP Vegetation", "ICP Waters"];
     var allMeasurements = ["deposition", "glass soiling", "lake chemistry", "limestone recession", "open field", "runoff", "soil", "soilwater", "throughfall", "vegetation"];
     var showCoordinates = false;
-    var mapRef = map_b35eeab9f609b8deb8dcf0da76f4792a;
+    var mapRef = map_35a2f9fbbfdf646a0dbf8164f32e5a31;
     var markerLayer = L.layerGroup().addTo(mapRef);
     var activeMarkers = [];
 
@@ -348,15 +361,27 @@ line-height: 1.4;
 
     updateMap();
 
-    // In a narrow embedded map, keep the filters closed so they do not
-    // obscure the map. On wider displays they open automatically.
-    if (window.innerWidth >= 700) {
+    function updateFilterPanelForViewport() {
         var panel = document.getElementById('filter-panel');
         var button = document.getElementById('filter-toggle');
-        panel.classList.add('open');
-        button.setAttribute('aria-expanded', 'true');
-        button.innerHTML = '✕ Filters';
+        var isWide = window.innerWidth >= 700;
+
+        if (isWide) {
+            panel.classList.add('open');
+            button.setAttribute('aria-expanded', 'true');
+            button.innerHTML = '✕ Filters';
+        } else {
+            panel.classList.remove('open');
+            button.setAttribute('aria-expanded', 'false');
+            button.innerHTML = '☰ Filters';
+        }
     }
+
+    // On wide displays the filters are visible; on narrow embedded maps
+    // they collapse to the Filters button. Re-evaluate if the iframe/window
+    // is resized after the map has loaded.
+    updateFilterPanelForViewport();
+    window.addEventListener('resize', updateFilterPanelForViewport);
     }
 
     if (document.readyState === "loading") {
@@ -366,8 +391,8 @@ line-height: 1.4;
     }
 })();
     
-            var map_b35eeab9f609b8deb8dcf0da76f4792a = L.map(
-                "map_b35eeab9f609b8deb8dcf0da76f4792a",
+            var map_35a2f9fbbfdf646a0dbf8164f32e5a31 = L.map(
+                "map_35a2f9fbbfdf646a0dbf8164f32e5a31",
                 {
                     center: [55.0, 15.0],
                     crs: L.CRS.EPSG3857,
@@ -379,13 +404,13 @@ line-height: 1.4;
 
                 }
             );
-            L.control.scale().addTo(map_b35eeab9f609b8deb8dcf0da76f4792a);
+            L.control.scale().addTo(map_35a2f9fbbfdf646a0dbf8164f32e5a31);
 
             
 
         
     
-            var tile_layer_c44f61ca79cf36bc8a2080fc252529f7 = L.tileLayer(
+            var tile_layer_67cdd44af7845f52ceb1280c72b18aee = L.tileLayer(
                 "https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png",
                 {
   "minZoom": 0,
@@ -402,7 +427,7 @@ line-height: 1.4;
             );
         
     
-            tile_layer_c44f61ca79cf36bc8a2080fc252529f7.addTo(map_b35eeab9f609b8deb8dcf0da76f4792a);
+            tile_layer_67cdd44af7845f52ceb1280c72b18aee.addTo(map_35a2f9fbbfdf646a0dbf8164f32e5a31);
         
     
             L.control.fullscreen(
@@ -412,7 +437,7 @@ line-height: 1.4;
   "titleCancel": "Exit Full Screen",
   "forceSeparateButton": false,
 }
-            ).addTo(map_b35eeab9f609b8deb8dcf0da76f4792a);
+            ).addTo(map_35a2f9fbbfdf646a0dbf8164f32e5a31);
         
 </script>
 </html>
