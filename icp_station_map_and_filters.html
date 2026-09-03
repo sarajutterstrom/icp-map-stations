@@ -17,7 +17,7 @@
             <meta name="viewport" content="width=device-width,
                 initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
             <style>
-                #map_35a2f9fbbfdf646a0dbf8164f32e5a31 {
+                #map_11673930b8d241b11a67f590a6849965 {
                     position: relative;
                     width: 100.0%;
                     height: 100.0%;
@@ -223,7 +223,7 @@
     </div>
 </div>
     
-            <div class="folium-map" id="map_35a2f9fbbfdf646a0dbf8164f32e5a31" ></div>
+            <div class="folium-map" id="map_11673930b8d241b11a67f590a6849965" ></div>
         
 </body>
 <script>
@@ -231,11 +231,11 @@
     
 (function() {
     function initStationFilters() {
-    var stationData = [{"station_name": "Pipb\u00e4cken Nedre", "country": "Sweden", "latitude": 57.06621756, "longitude": 12.78971457, "icp_list": ["ICP Waters"], "measurement_list": ["runoff", "soilwater", "throughfall"], "color": "blue"}, {"station_name": "Aneboda", "country": "Sweden", "latitude": 57.1137, "longitude": 14.55, "icp_list": ["ICP IM", "ICP Vegetation"], "measurement_list": ["soil", "open field", "throughfall"], "color": "gray"}, {"station_name": "Lange Bramke", "country": "Germany", "latitude": 51.855, "longitude": 10.421, "icp_list": ["ICP Waters"], "measurement_list": ["runoff", "lake chemistry"], "color": "blue"}, {"station_name": "Pallas", "country": "Finland", "latitude": 67.9667, "longitude": 24.1167, "icp_list": ["ICP Vegetation"], "measurement_list": ["vegetation"], "color": "orange"}, {"station_name": "Z\u00f6belboden", "country": "Austria", "latitude": 47.84224607, "longitude": 14.44413616, "icp_list": ["ICP IM"], "measurement_list": ["runoff", "lake chemistry", "deposition"], "color": "red"}, {"station_name": "Rjukan-Notodden Industrial Heritage Site", "country": "Norway", "latitude": 59.556, "longitude": 9.26, "icp_list": ["ICP Materials"], "measurement_list": ["limestone recession", "glass soiling"], "color": "purple"}, {"station_name": "Myrberg", "country": "Sweden", "latitude": 66.04, "longitude": 20.3743, "icp_list": ["ICP Forest"], "measurement_list": ["soil", "vegetation"], "color": "green"}];
+    var stationData = [{"station_name": "Pipb\u00e4cken Nedre", "country": "SE", "latitude": 57.06621756, "longitude": 12.78971457, "icp_list": ["ICP Waters"], "measurement_list": ["runoff", "soilwater", "throughfall"], "color": "blue"}, {"station_name": "Aneboda", "country": "SE", "latitude": 57.1137, "longitude": 14.55, "icp_list": ["ICP IM", "ICP Vegetation"], "measurement_list": ["soil", "open field", "throughfall"], "color": "gray"}, {"station_name": "Lange Bramke", "country": "DE", "latitude": 51.855, "longitude": 10.421, "icp_list": ["ICP Waters"], "measurement_list": ["runoff", "lake chemistry"], "color": "blue"}, {"station_name": "Pallas", "country": "FI", "latitude": 67.9667, "longitude": 24.1167, "icp_list": ["ICP Vegetation"], "measurement_list": ["vegetation"], "color": "orange"}, {"station_name": "Z\u00f6belboden", "country": "AT", "latitude": 47.84224607, "longitude": 14.44413616, "icp_list": ["ICP IM"], "measurement_list": ["runoff", "lake chemistry", "deposition"], "color": "red"}, {"station_name": "Rjukan-Notodden Industrial Heritage Site", "country": "NO", "latitude": 59.556, "longitude": 9.26, "icp_list": ["ICP Materials"], "measurement_list": ["limestone recession", "glass soiling"], "color": "purple"}, {"station_name": "Myrberg", "country": "SE", "latitude": 66.04, "longitude": 20.3743, "icp_list": ["ICP Forest"], "measurement_list": ["soil", "vegetation"], "color": "green"}];
     var allIcps = ["ICP Forest", "ICP IM", "ICP Materials", "ICP Vegetation", "ICP Waters"];
     var allMeasurements = ["deposition", "glass soiling", "lake chemistry", "limestone recession", "open field", "runoff", "soil", "soilwater", "throughfall", "vegetation"];
     var showCoordinates = false;
-    var mapRef = map_35a2f9fbbfdf646a0dbf8164f32e5a31;
+    var mapRef = map_11673930b8d241b11a67f590a6849965;
     var markerLayer = L.layerGroup().addTo(mapRef);
     var activeMarkers = [];
 
@@ -391,8 +391,8 @@
     }
 })();
     
-            var map_35a2f9fbbfdf646a0dbf8164f32e5a31 = L.map(
-                "map_35a2f9fbbfdf646a0dbf8164f32e5a31",
+            var map_11673930b8d241b11a67f590a6849965 = L.map(
+                "map_11673930b8d241b11a67f590a6849965",
                 {
                     center: [55.0, 15.0],
                     crs: L.CRS.EPSG3857,
@@ -404,21 +404,21 @@
 
                 }
             );
-            L.control.scale().addTo(map_35a2f9fbbfdf646a0dbf8164f32e5a31);
+            L.control.scale().addTo(map_11673930b8d241b11a67f590a6849965);
 
             
 
         
     
-            var tile_layer_67cdd44af7845f52ceb1280c72b18aee = L.tileLayer(
-                "https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png",
+            var tile_layer_7c59cbbf3ca4d8d2c1c5d66c9f6f13ac = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
                 {
   "minZoom": 0,
-  "maxZoom": 20,
-  "maxNativeZoom": 20,
+  "maxZoom": 19,
+  "maxNativeZoom": 19,
   "noWrap": false,
-  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca href=\"https://carto.com/attributions\"\u003eCARTO\u003c/a\u003e",
-  "subdomains": "abcd",
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors",
+  "subdomains": "abc",
   "detectRetina": false,
   "tms": false,
   "opacity": 1,
@@ -427,7 +427,7 @@
             );
         
     
-            tile_layer_67cdd44af7845f52ceb1280c72b18aee.addTo(map_35a2f9fbbfdf646a0dbf8164f32e5a31);
+            tile_layer_7c59cbbf3ca4d8d2c1c5d66c9f6f13ac.addTo(map_11673930b8d241b11a67f590a6849965);
         
     
             L.control.fullscreen(
@@ -437,7 +437,7 @@
   "titleCancel": "Exit Full Screen",
   "forceSeparateButton": false,
 }
-            ).addTo(map_35a2f9fbbfdf646a0dbf8164f32e5a31);
+            ).addTo(map_11673930b8d241b11a67f590a6849965);
         
 </script>
 </html>
