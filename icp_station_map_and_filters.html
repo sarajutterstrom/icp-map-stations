@@ -17,7 +17,7 @@
             <meta name="viewport" content="width=device-width,
                 initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
             <style>
-                #map_81b4903e28bb094a71f710148b316fd6 {
+                #map_0b5e77855f11bdd423e6c79da6f53fc9 {
                     position: relative;
                     width: 100.0%;
                     height: 100.0%;
@@ -222,7 +222,7 @@
     </div>
 </div>
     
-            <div class="folium-map" id="map_81b4903e28bb094a71f710148b316fd6" ></div>
+            <div class="folium-map" id="map_0b5e77855f11bdd423e6c79da6f53fc9" ></div>
         
 </body>
 <script>
@@ -234,7 +234,7 @@
     var allIcps = ["ICP Forests", "ICP IM", "ICP Materials", "ICP Vegetation", "ICP Waters"];
     var allMeasurements = ["aerial green algae", "air chemistry", "birds", "epiphytes", "foliage chemistry", "forest damage", "glass soiling", "groundwater chemistry", "lake chemistry", "lakewater chemistry", "limestone recession", "litterfall chemistry", "metal chemistry mosses", "meteorology", "microbial decomposition", "precipitation chemistry", "runoff", "runoff water chemistry", "soil", "soil chemistry", "soilwater", "soilwater chemistry", "stemflow", "throughfall", "throughfall chemistry", "tree bioelements", "vegetation", "vegetation structure"];
     var showCoordinates = false;
-    var mapRef = map_81b4903e28bb094a71f710148b316fd6;
+    var mapRef = map_0b5e77855f11bdd423e6c79da6f53fc9;
     var markerLayer = L.layerGroup().addTo(mapRef);
     var activeMarkers = [];
 
@@ -291,11 +291,8 @@
 
         var html = '' +
             '<div style="width: 180px; line-height: 1.5;">' +
-                '<div style="font-size: 15px; font-weight: 700; margin-bottom: 8px;">' + escapeHtml(station.station_name) + '</div>' +
-                '<div><b>Country:</b> ' + escapeHtml(station.country || '') + '</div>' +
-                '<div class="popup-block">' +
-                    '<b>ICP responsible</b><br>' +
-                    escapeHtml(icpText) +
+                '<div style="font-size: 15px; font-weight: 700; margin-bottom: 8px;">' +
+                    escapeHtml(icpText) + ': ' + escapeHtml(station.station_name) +
                 '</div>' +
                 '<div class="popup-block">' +
                     '<b>Measurements</b><br>' +
@@ -390,8 +387,8 @@
     }
 })();
     
-            var map_81b4903e28bb094a71f710148b316fd6 = L.map(
-                "map_81b4903e28bb094a71f710148b316fd6",
+            var map_0b5e77855f11bdd423e6c79da6f53fc9 = L.map(
+                "map_0b5e77855f11bdd423e6c79da6f53fc9",
                 {
                     center: [55.0, 15.0],
                     crs: L.CRS.EPSG3857,
@@ -403,13 +400,13 @@
 
                 }
             );
-            L.control.scale().addTo(map_81b4903e28bb094a71f710148b316fd6);
+            L.control.scale().addTo(map_0b5e77855f11bdd423e6c79da6f53fc9);
 
             
 
         
     
-            var tile_layer_02d42a0660fc581d2a69caa888dfaf1d = L.tileLayer(
+            var tile_layer_30533eba96b4d429d9e8db3e2f80879c = L.tileLayer(
                 "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
                 {
   "minZoom": 0,
@@ -426,7 +423,7 @@
             );
         
     
-            tile_layer_02d42a0660fc581d2a69caa888dfaf1d.addTo(map_81b4903e28bb094a71f710148b316fd6);
+            tile_layer_30533eba96b4d429d9e8db3e2f80879c.addTo(map_0b5e77855f11bdd423e6c79da6f53fc9);
         
     
             L.control.fullscreen(
@@ -436,7 +433,7 @@
   "titleCancel": "Exit Full Screen",
   "forceSeparateButton": false,
 }
-            ).addTo(map_81b4903e28bb094a71f710148b316fd6);
+            ).addTo(map_0b5e77855f11bdd423e6c79da6f53fc9);
         
 </script>
 </html>
